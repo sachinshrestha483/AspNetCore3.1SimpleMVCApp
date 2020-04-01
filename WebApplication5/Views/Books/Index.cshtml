@@ -1,0 +1,44 @@
+﻿@model IEnumerable<WebApplication5.Models.Book>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<div align="center"> <a  class="btn btn-primary"  asp-action="Upsert"></a> </div>
+
+<a align="center" asp-action="Upsert" class="btn btn-primary">Add</a>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Author</th>
+            <th scope="col">ISBN</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <th scope="row">@item.Id</th>
+            <td>@item.Name</td>
+            <td>@item.Author</td>
+            <td>@item.ISBN</td>
+            <td><a class="btn btn-primary" asp-action="Upsert"  asp-route-id="@item.Id"  >Edit</a></td>
+            <td><a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a></td>
+
+            <td></td>
+
+        </tr>
+        }
+
+
+    </tbody>
+</table>
+
